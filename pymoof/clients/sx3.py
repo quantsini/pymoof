@@ -103,7 +103,7 @@ class SX3Client:
 
         return LockState(result[0])
 
-    async def get_distance_travelled(self) -> int:
+    async def get_distance_travelled(self) -> float:
         # Returns kilometers, stored as hectometers
         result = await self._read(
             self._bike_profile.Movement.DISTANCE,
