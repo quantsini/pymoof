@@ -1,5 +1,5 @@
 # pymoof
-Exploring bluetooth functionality of the Vanmoof SX3
+Exploring bluetooth functionality of the Vanmoof S3 and X3.
 
 ## Usage
 ```python
