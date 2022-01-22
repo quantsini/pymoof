@@ -1,0 +1,10 @@
+bleak==0.14.1
+certifi==2021.10.8
+cffi==1.15.0
+charset-normalizer==2.0.10
+cryptography==36.0.1
+dbus-next==0.2.3
+idna==3.3
+pycparser==2.21
+requests==2.27.1
+urllib3==1.26.8
