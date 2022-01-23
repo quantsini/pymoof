@@ -16,8 +16,42 @@ class BellTone(Enum):
 class LockState(Enum):
 
     UNLOCKED = 0x00
-    LOCK = 0x01
-    ATTEMPT_UNLOCK = 0x02
+    LOCKED = 0x01
+    AWAITING_UNLOCK = 0x02
+
+
+class Sound(Enum):
+
+    SCROLLING_TONE = 0x1
+    BEEP_NEGATIVE = 0x2
+    BEEP_POSITIVE = 0x3
+    UNLOCK_COUNTDOWN = 0x4
+    PAIRING = 0x5
+    ENTER_BACKUP_CODE_MODE = 0x6
+    RESET_COUNTDOWN = 0x7
+    PAIRING_SUCCESSFUL = 0x8
+    PAIRING_FAILED = 0x9
+    HORN_1 = 0xA
+    HORN_URGENT = 0xB
+    LOCK = 0xC
+    UNLOCK = 0xD
+    ALARM_STAGE_ONE = 0xE
+    ALARM_STAGE_TWO = 0xF
+    SYSTEM_STARTUP = 0x10
+    SYSTEM_SHUTDOWN = 0x11
+    CHARGING = 0x12
+    DIAGNOSE = 0x13
+    FIRMWARE_DOWNLOAD = 0x14
+    FIRMWARE_FAILED = 0x15
+    HORN_2 = 0x16
+    HORN_3 = 0x17
+    HORN_4 = 0x17
+    FIRMWARE_SUCCESSFUL = 0x18
+    NOISE = 0x19
+    UNPAIRING = 0x1A
+    FM_DISABLE = 0x1B
+    FM_ENABLE = 0x1C
+    FM_NOISE = 0x1D
 
 
 class SX3Client:
@@ -87,6 +121,13 @@ class SX3Client:
         await self._write(
             self._bike_profile.Movement.POWER_LEVEL,
             [level, 0x1],
+        )
+
+    async def play_sound(self, sound: Sound, count: int = 1):
+        assert 0 < count
+        await self._write(
+            self._bike_profile.Sound.PLAY_SOUND,
+            [sound.value, count],
         )
 
     async def get_battery_level(self) -> int:
