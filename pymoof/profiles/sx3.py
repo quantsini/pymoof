@@ -13,7 +13,7 @@ class SX3Profile:
     def build_authentication_payload(self, nonce: bytes) -> bytes:
         encryptor = self._cipher.encryptor()
 
-        data = bytearray([0] * 16)
+        data = bytearray(16)
         data[0:2] = nonce
         data = bytearray(encryptor.update(data) + encryptor.finalize())
 
@@ -29,7 +29,7 @@ class SX3Profile:
     def build_encrypted_payload(self, nonce: bytes, data: bytes) -> bytes:
         encryptor = self._cipher.encryptor()
 
-        payload = bytearray([0] * 16)
+        payload = bytearray(16)
         payload[0:2] = nonce
         payload[2:] = data
 
