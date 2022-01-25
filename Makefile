@@ -1,6 +1,11 @@
+production: install
+
 all: install-dev install-hooks
 	@echo "=========="
 	@echo "Be sure to activate your virtualenv with '. venv/bin/activate'"
+
+install: venv
+	. venv/bin/activate && pip install -r requirements.txt
 
 install-dev: venv
 	. venv/bin/activate && pip install -r requirements.txt -r requirements-dev.txt
