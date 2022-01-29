@@ -1,7 +1,6 @@
 import asyncio
 
 import bleak
-
 from pymoof.clients.sx3 import BellTone
 from pymoof.clients.sx3 import LockState
 from pymoof.clients.sx3 import Sound

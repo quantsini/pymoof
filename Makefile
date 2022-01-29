@@ -1,4 +1,8 @@
-production: install
+build: install-dev
+	. venv/bin/activate && python3 -m build
+
+upload: build
+	. venv/bin/activate && python3 -m twine upload dist/*
 
 all: install-dev install-hooks
 	@echo "=========="
@@ -19,3 +23,4 @@ venv:
 clean:
 	rm -rf venv
 	find . | grep -E "(__pycache__|\.pyc|\.pyo)" | xargs rm -rf
+	rm -rf dist

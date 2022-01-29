@@ -1,7 +1,6 @@
 from enum import Enum
 
 import bleak.backends.client
-
 from pymoof.profiles.sx3 import SX3Profile
 from pymoof.util import bleak_utils
 
@@ -155,8 +154,7 @@ class SX3Client:
         result = await self._read(
             self._bike_profile.Movement.POWER_LEVEL,
         )
-
-        return result[0]
+        return int.from_bytes(result, "little")
 
     async def get_frame_number(self) -> str:
         result = await self._read(
@@ -170,14 +168,10 @@ class SX3Client:
         result = await self._read(
             self._bike_profile.Sound.SOUND_VOLUME,
         )
-
-        # TODO: parse this
-        return result
+        return int.from_bytes(result, "little")
 
     async def get_speed(self) -> bytes:
         result = await self._read(
             self._bike_profile.Movement.SPEED,
         )
-
-        # TODO: parse this
-        return result
+        return int.from_bytes(result, "little")
