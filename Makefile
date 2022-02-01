@@ -1,8 +1,6 @@
 .PHONY: test all shell clean lint
 test:
 	poetry run tox
-all:
-	poetry run python example.py
 shell:
 	poetry shell
 build:
