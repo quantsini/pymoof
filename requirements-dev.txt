@@ -1,7 +1,0 @@
-pre-commit
-pytest
-ipython
-ipdb
-build
-twine
-tox

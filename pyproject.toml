@@ -26,6 +26,20 @@ pytest-asyncio = "^0.17.2"
 pytest = "^6.2.5"
 ipdb = "^0.13.9"
 pre-commit = "^2.17.0"
+tox = "^3.24.5"
+
+[tool.tox]
+legacy_tox_ini="""
+[tox]
+isolated_build = True
+envlist = py39
+
+[testenv]
+deps = pytest
+commands =
+    coverage run -m pytest {posargs:tests}
+    coverage report --fail-under=95 -m
+"""
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

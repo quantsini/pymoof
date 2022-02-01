@@ -1,6 +1,6 @@
 .PHONY: test all shell clean lint
 test:
-	poetry run pytest --cov=pymoof tests/
+	poetry run tox
 all:
 	poetry run python example.py
 shell:
