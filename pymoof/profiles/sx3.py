@@ -87,7 +87,7 @@ class SX3Profile:
         BATTERY_FIRMWARE_VERSION = "6acc5550-e631-4069-944d-b8ca7598ad50"
 
         # data returned seems to be firmware version info?
-        __UNKNOWN = "6acc5551-e631-4069-944d-b8ca7598ad50"
+        _UNKNOWN = "6acc5551-e631-4069-944d-b8ca7598ad50"
 
         FRAME_NUMBER = "6acc5552-e631-4069-944d-b8ca7598ad50"
 

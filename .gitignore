@@ -2,3 +2,6 @@ __pycache__
 venv
 dist/
 *.egg-info
+.tox/
+poetry.lock
+.coverage

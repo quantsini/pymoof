@@ -4,3 +4,4 @@ ipython
 ipdb
 build
 twine
+tox

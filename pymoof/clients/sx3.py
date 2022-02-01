@@ -1,6 +1,7 @@
 from enum import Enum
 
 import bleak.backends.client
+
 from pymoof.profiles.sx3 import SX3Profile
 from pymoof.util import bleak_utils
 
