@@ -92,7 +92,6 @@ class SX3Client:
             payload,
         )
 
-    # XXX: Maybe pull the profile specific uuids out into the profiles themselves?
     async def authenticate(self) -> None:
         nonce = await self._get_nonce()
         payload = self._bike_profile.build_authentication_payload(nonce)
