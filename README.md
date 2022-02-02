@@ -1,5 +1,5 @@
 # pymoof
-![ReadTheDocs](https://readthedocs.org/projects/pymoof/badge/?version=latest)
+[![ReadTheDocs](https://readthedocs.org/projects/pymoof/badge/?version=latest)](https://pymoof.readthedocs.io/en/latest/) [![PyPI version](https://badge.fury.io/py/pymoof.svg)](https://badge.fury.io/py/pymoof)
 
 Connect to your Vanmoof S3 and X3 through bluetooth.
 
