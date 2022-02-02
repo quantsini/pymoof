@@ -28,6 +28,7 @@ coverage = "^6.3"
 pytest-cov = "^3.0.0"
 pytest-asyncio = "^0.17.2"
 Sphinx = "^4.4.0"
+sphinx-rtd-theme = "^1.0.0"
 
 [tool.tox]
 legacy_tox_ini="""

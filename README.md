@@ -1,4 +1,6 @@
 # pymoof
+![ReadTheDocs](https://readthedocs.org/projects/pymoof/badge/?version=latest)
+
 Connect to your Vanmoof S3 and X3 through bluetooth.
 
 ## Installation
@@ -9,9 +11,15 @@ Install python 3.7+, then use pip to install pymoof.
 pymoof was tested to work on MacOS 12.1, Ubuntu 20.04.3 LTS, and a Raspberry Pi 3 b+ running Raspberry Pi OS (32-bit) / 2021-10-30.
 ```python
 from pymoof.clients.sx3 import SX3Client
+import bleak
 
-client = SX3Client(bleak_client, encryption_key)
-client.authenticate()
+...
+
+device = ...
+key = ...
+async with bleak.BleakClient(device) as bleak_client:
+	client = SX3Client(bleak_client, encryption_key)
+	await client.authenticate()
 ```
 You must have an instantiated bleak client that is connected to the bike. See `pymoof.tools.discover_bike` to determine which device is your bike and `pymoof.tools.retrieve_encryption_key` to connect to Vanmoof servers to get your encryption key.
 

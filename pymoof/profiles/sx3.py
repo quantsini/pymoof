@@ -7,10 +7,22 @@ from cryptography.hazmat.primitives.ciphers import modes
 
 
 class SX3Profile:
+    """
+    Represents the profile for the GATT UUIDs for the S3/X3. Also contains functionality
+    to encrypt and decrypt BLE payloads, as well as building the authentication payload.
+
+    :param key: The hexidecimal string of the encrypted key from Vanmoof servers.
+    """
+
     def __init__(self, key: str) -> None:
         self._cipher = Cipher(algorithms.AES(bytes.fromhex(key)), modes.ECB())
 
     def build_authentication_payload(self, nonce: bytes) -> bytes:
+        """
+        Builds the authentication payload given a nonce.
+
+        :param nonce: A bytes array that represents the nonce from a challenge response.
+        """
         encryptor = self._cipher.encryptor()
 
         data = bytearray(16)
@@ -23,10 +35,22 @@ class SX3Profile:
         return bytes(data)
 
     def decrypt_payload(self, data: bytes) -> bytes:
+        """
+        Decrypts a bluetooth payload.
+
+        :param data: A bytes array of data. Must be a multiple of 16 bytes long.
+        """
         decryptor = self._cipher.decryptor()
         return decryptor.update(data) + decryptor.finalize()
 
     def build_encrypted_payload(self, nonce: bytes, data: bytes) -> bytes:
+        """
+        Encrypts data signed with a nonce. This will build a payload and pad with
+        zeroes to the nearest multiple of 16 bytes.
+
+        :param nonce: A bytes array that represents the nonce from a challenge response.
+        :param data: A bytes array of data.
+        """
         encryptor = self._cipher.encryptor()
 
         payload = bytearray(16)

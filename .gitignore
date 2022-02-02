@@ -5,3 +5,6 @@ dist/
 .tox/
 poetry.lock
 .coverage
+docs/_build/
+.DS_Store
+*.swp
