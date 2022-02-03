@@ -56,7 +56,7 @@ class Sound(Enum):
 
 class SX3Client:
     """
-    A wrapped around a bleak client that allows bluetooth communication with a Vanmoof S3 and X3.
+    A wrapper around a bleak client that allows bluetooth communication with a Vanmoof S3 and X3.
 
     You must provide this object with a connected BleakClient and a hexidecimal string formatted key
     for the bike.
@@ -244,7 +244,7 @@ class SX3Client:
         result = await self._read(
             self._bike_profile.Movement.POWER_LEVEL,
         )
-        return int.from_bytes(result, "little")
+        return result
 
     async def get_frame_number(self) -> str:
         """
@@ -276,7 +276,7 @@ class SX3Client:
         result = await self._read(
             self._bike_profile.Sound.SOUND_VOLUME,
         )
-        return int.from_bytes(result, "little")
+        return result
 
     async def get_speed(self) -> int:
         """
@@ -292,3 +292,18 @@ class SX3Client:
             self._bike_profile.Movement.SPEED,
         )
         return int.from_bytes(result, "little")
+
+    async def get_light_mode(self) -> int:
+        """
+        **Must be authenticated to call**
+
+        Gets the light mode. TODO: parse output
+
+        :raises ``bleak.exc.BleakError``: if the client is not authenticated.
+
+        :return: N/A
+        """
+        result = await self._read(
+            self._bike_profile.Movement.SPEED,
+        )
+        return result

@@ -14,7 +14,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.7"
+python = "~=3.7"
 requests = "^2.27.1"
 bleak = "^0.14.2"
 cryptography = "^36.0.1"
@@ -29,6 +29,7 @@ pytest-cov = "^3.0.0"
 pytest-asyncio = "^0.17.2"
 Sphinx = "^4.4.0"
 sphinx-rtd-theme = "^1.0.0"
+m2r2 = "^0.3.2"
 
 [tool.tox]
 legacy_tox_ini="""
@@ -42,6 +43,9 @@ commands =
     coverage run -m pytest {posargs:tests}
     coverage report --fail-under=95 -m
 """
+
+[tool.pytest.ini_options]
+asyncio_mode = "strict"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
