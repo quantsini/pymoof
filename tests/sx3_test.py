@@ -14,6 +14,11 @@ def key():
 
 
 @pytest.fixture
+def user_key_id():
+    return 1
+
+
+@pytest.fixture
 def bleak_client(services):
     mock_client = mock.AsyncMock()
     mock_client.get_services.return_value = services
@@ -33,8 +38,8 @@ def service():
 
 
 @pytest.fixture
-def client(bleak_client, key):
-    return SX3Client(bleak_client, key)
+def client(bleak_client, key, user_key_id):
+    return SX3Client(bleak_client, key, user_key_id)
 
 
 @pytest.mark.asyncio

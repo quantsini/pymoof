@@ -63,16 +63,18 @@ class SX3Client:
 
     :param bleak_client: Connected bleak.backends.client.BaseBleakClient
     :param key: The encryption key for the bike from Vanmoof servers
+    :param user_key_id: The user key id for the bike from Vanmoof servers
     """
 
     def __init__(
         self,
         bleak_client: bleak.backends.client.BaseBleakClient,
         key: str,
+        user_key_id: int,
     ) -> None:
 
         self._gatt_client = bleak_client
-        self._bike_profile = SX3Profile(key)
+        self._bike_profile = SX3Profile(key, user_key_id)
 
     async def _get_nonce(self) -> bytes:
         return await self._read(

@@ -12,10 +12,12 @@ class SX3Profile:
     to encrypt and decrypt BLE payloads, as well as building the authentication payload.
 
     :param key: The hexidecimal string of the encrypted key from Vanmoof servers.
+    :param user_key_id: Int of the user key id from Vanmoof servers.
     """
 
-    def __init__(self, key: str) -> None:
+    def __init__(self, key: str, user_key_id: int) -> None:
         self._cipher = Cipher(algorithms.AES(bytes.fromhex(key)), modes.ECB())
+        self._user_key_id = user_key_id
 
     def build_authentication_payload(self, nonce: bytes) -> bytes:
         """
@@ -29,8 +31,8 @@ class SX3Profile:
         data[0:2] = nonce
         data = bytearray(encryptor.update(data) + encryptor.finalize())
 
-        # unknown why we need to append these 4 bytes _after_ encryption
-        data.extend([0, 0, 0, 2])
+        # Append the user key id
+        data.extend([0, 0, 0, self._user_key_id])
 
         return bytes(data)
 
