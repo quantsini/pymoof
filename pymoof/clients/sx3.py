@@ -282,11 +282,11 @@ class SX3Client:
         """
         **Must be authenticated to call**
 
-        Gets the current speed of the bike in the units set by the bike.
+        Gets the current speed of the bike in kilometers per hour
 
         :raises ``bleak.exc.BleakError``: if the client is not authenticated.
 
-        :return: An integer that represents the speed of the bike.
+        :return: An integer that represents the speed of the bike in kilometers per hour.
         """
         result = await self._read(
             self._bike_profile.Movement.SPEED,

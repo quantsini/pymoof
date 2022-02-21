@@ -1,11 +1,13 @@
-.PHONY: test all shell clean lint
-test:
+.PHONY: test shell env build link clean
+env:
+	poetry install
+test: env
 	poetry run tox
-shell:
+shell: env
 	poetry shell
-build:
+build: env
 	poetry build
-lint:
+lint: env
 	poetry run pre-commit run --all
 clean:
 	rm -rf dist

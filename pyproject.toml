@@ -38,7 +38,10 @@ isolated_build = True
 envlist = py39
 
 [testenv]
-deps = pytest
+deps =
+    pytest
+    coverage
+    pytest-asyncio
 commands =
     coverage run -m pytest {posargs:tests}
     coverage report --fail-under=95 -m
