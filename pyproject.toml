@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pymoof"
-version = "0.0.5"
+version = "0.0.6"
 description = "Connect to your Vanomof S3/X3 bike"
 authors = ["Henri Bai <quantsini@gmail.com>"]
 license = "MIT"
